@@ -78,7 +78,11 @@ app.post('/check-user',(req,res)=>{
     const data = req.body.email;
     users.findOne({email:data})
     .then((response)=>{
-        res.send(response)
+        if(!response==""){
+            res.send(true)
+        }else{
+            res.send(false)
+        }
     })
     .catch((err)=>{
         console.log(err)
