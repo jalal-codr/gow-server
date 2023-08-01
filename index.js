@@ -35,6 +35,7 @@ app.post('/post-user',(req,res)=>{
     const data = new users({
         name: req.body.name,
         email : req.body.email,
+        photo : req.body.photo
     })
     data.save()
     .then((result)=>res.send(result))
@@ -43,7 +44,7 @@ app.post('/post-user',(req,res)=>{
 app.post('/post-content',(req,res)=>{
     const data = new posts({
         name: req.body.name,
-        body : req.body.email,
+        body : req.body.body,
         photo: req.body.photo,
         likes:0
     })
@@ -71,6 +72,16 @@ app.get('/posts',(req,res)=>{
     })
     .catch((err)=>{
         res.send(err)
+    })
+})
+app.post('/check-user',(req,res)=>{
+    const data = req.body.email;
+    users.findOne({email:data})
+    .then((response)=>{
+        res.send(response)
+    })
+    .catch((err)=>{
+        console.log(err)
     })
 })
 
