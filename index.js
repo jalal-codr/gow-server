@@ -54,7 +54,7 @@ app.post('/post-content',(req,res)=>{
 
 
 app.get('/users',(req,res)=>{
-    usersTemplate.find()
+    usersTemplate.find({})
     .then((res)=>{
         res.send(res)
     })
@@ -64,13 +64,13 @@ app.get('/users',(req,res)=>{
 })
 
 app.get('/posts',(req,res)=>{
-    try{
-        const users = postsTemplate(find());
-        res.send(users)
-    }
-    catch(err){
+    postsTemplate.find({})
+    .then((res)=>{
+        res.send(res)
+    })
+    .catch((err)=>{
         res.send(err)
-    }
+    })
 })
 
 
