@@ -53,6 +53,27 @@ app.post('/post-content',(req,res)=>{
 })
 
 
+app.get('/users',(req,res)=>{
+    usersTemplate.find()
+    .then((res)=>{
+        res.send(res)
+    })
+    .catch((err)=>{
+        res.send(err)
+    })
+})
+
+app.get('/posts',(req,res)=>{
+    try{
+        const users = postsTemplate(find());
+        res.send(users)
+    }
+    catch(err){
+        res.send(err)
+    }
+})
+
+
 
 
 
